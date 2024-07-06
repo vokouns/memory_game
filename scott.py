@@ -1,6 +1,6 @@
 import os
 import string
-import sys
+
 
 user_ready = ""
 
@@ -52,3 +52,6 @@ for letter in string.ascii_lowercase:
     recall_items()
     if letter == "z":
         break
+print("Here are all your food items:\n")
+for letter, items in items_dict.items():
+    print(f"'Letter {letter}': {', 'join(items)}")
