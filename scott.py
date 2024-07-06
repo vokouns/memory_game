@@ -2,12 +2,26 @@ import os
 import string
 import sys
 
+user_ready = ""
+
 # Clear the terminal screen
 def term_clear():
     os.system('cls' if os.name == 'nt' else 'clear')
 
 # Dictionary to store the items for each letter
 items_dict = {}
+
+# Asks if ready
+def ready():
+    print("Let's play a memory game!")
+    user_ready = input("Are you ready? (y)es or (n)o")
+    if user_ready == "y":
+        print("Great, here we go!")
+    elif user_ready == "n":
+        print("COME ON YOU WIMP LET'S GOOOOOOO")
+    else:
+        print("NO MAYBES ABOUT IT") 
+        print("It's a (y)es or (n)o question!")
 
 # Function to add items for a specific letter
 def add_items_for_letter(letter):
@@ -26,10 +40,15 @@ def recall_items():
             else:
                 print(f"Incorrect. The correct food item for the letter letter '{letter}' was: {correct_items}. Try again next time")
                 print("GAME OVER")
-                sys.exit(1)
+                break
             input("Press Enter to continue...")
 
+
+ready()
 # Main loop to iterate through the alphabet
 for letter in string.ascii_lowercase:
     add_items_for_letter(letter)
+
     recall_items()
+    if letter == "z":
+        break
